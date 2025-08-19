@@ -1,8 +1,6 @@
 #ifndef DATABASE_MANAGER_H
 #define DATABASE_MANAGER_H
 
-#define _WIN32_WINNT 0x0601
-
 #include <string>
 #include <memory>
 
