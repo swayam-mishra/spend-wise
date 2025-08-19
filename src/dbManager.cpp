@@ -88,5 +88,36 @@ void DatabaseManager::viewAllTransactions(int userId) {
 }
 
 void DatabaseManager::generateMonthlyReport(int userId, int month, int year) {
-    std::cout << "Placeholder for generateMonthlyReport" << std::endl;
+    try {
+        std::unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
+            "SELECT "
+            "   COALESCE(SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END), 0) AS total_income, "
+            "   COALESCE(SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END), 0) AS total_expense "
+            "FROM transactions "
+            "WHERE user_id = ? AND MONTH(transaction_date) = ? AND YEAR(transaction_date) = ?"
+        ));
+        pstmt->setInt(1, userId);
+        pstmt->setInt(2, month);
+        pstmt->setInt(3, year);
+
+        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+        std::cout << "\n--- Monthly Report for " << month << "/" << year << " ---" << std::endl;
+
+        if (res->next()) {
+            double totalIncome = res->getDouble("total_income");
+            double totalExpense = res->getDouble("total_expense");
+            double savings = totalIncome - totalExpense;
+
+            std::cout << std::fixed << std::setprecision(2);
+            std::cout << "Total Income:   $" << totalIncome << std::endl;
+            std::cout << "Total Expenses: $" << totalExpense << std::endl;
+            std::cout << "--------------------------" << std::endl;
+            std::cout << "Net Savings:    $" << savings << std::endl;
+        }
+        std::cout << "--------------------------\n" << std::endl;
+
+    } catch (sql::SQLException &e) {
+        std::cerr << "ERROR: SQL Exception in generateMonthlyReport: " << e.what() << std::endl;
+    }
 }
