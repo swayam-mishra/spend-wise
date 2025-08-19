@@ -1,0 +1,37 @@
+# --- Sensitive Information ---
+config.ini
+*.ini
+
+# --- C/C++ Build Artifacts ---
+*.exe
+*.out
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.lib
+*.pdb
+
+# --- Python Specific ---
+/venv/
+/.venv/
+/env/
+/.env/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# --- IDE and Editor Configuration ---
+.vscode/
+.idea/
+.vs/
+*.suo
+*.user
+
+# --- OS-generated Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
