@@ -18,9 +18,9 @@ CREATE TABLE users (
 CREATE TABLE transactions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    amount DECIMAL(10, 2) NOT NULL, -- Suitable for currency values
+    amount DECIMAL(10, 2) NOT NULL, 
     category VARCHAR(100) NOT NULL,
-    type ENUM('income', 'expense') NOT NULL, -- Restricts values to 'income' or 'expense'
+    type ENUM('income', 'expense') NOT NULL,
     transaction_date DATE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
