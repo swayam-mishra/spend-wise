@@ -19,8 +19,8 @@ DatabaseManager::DatabaseManager(const std::string& host, const std::string& use
         std::cerr << "SQLState: " << e.getSQLState() << std::endl;
         std::cerr << "Message: " << e.what() << std::endl;
         exit(1); 
+    }
 }
-
 
 DatabaseManager::~DatabaseManager() {
     try {
