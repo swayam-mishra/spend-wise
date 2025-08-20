@@ -4,7 +4,7 @@
 
 Spend Wise is a command-line interface (CLI) application designed for personal finance management. It provides a robust C++ backend for core transaction handling and leverages a Python analytics engine to offer intelligent insights, including future expense prediction and AI-generated financial tips.
 
-## Visual Demo
+<!-- ## Visual Demo
 
 *(Once your project is running, take screenshots and replace these placeholders. This is crucial for making a great first impression!)*
 
@@ -14,7 +14,7 @@ Spend Wise is a command-line interface (CLI) application designed for personal f
 **Python Expense Prediction Chart:**
 ![Python Matplotlib Chart](https://placehold.co/600x400/2d3748/ffffff?text=Python%20Expense%20Prediction%20Chart)
 
----
+--- -->
 
 ## Core Features
 
